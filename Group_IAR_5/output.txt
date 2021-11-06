@@ -1,0 +1,104 @@
+
+---- Welcome to Happy Helpers Clinic ----
+
+
+----------------------
+
+--->>  Add Patient
+
+The patient Sultan Alsulami, with ID 10000 is added successfully.
+The patient Wael Alzhrani, with ID 10001 is added successfully.
+The patient Anas Anwar, with ID 10002 is added successfully.
+The patient Omar Ali, with ID 10003 is added successfully.
+----------------------
+
+--->>  Add Doctor
+
+The doctor Fatima Ahmed, with ID 20000 is added successfully.
+The doctor Ahmad Emaed, with ID 20001 is added successfully.
+The doctor Sara Fawaz, with ID 20002 is added successfully.
+----------------------
+
+--->>  Add Nurse
+
+The nurse Amal Naser, with ID 30000 is added successfully.
+The nurse Lama Mohammed, with ID 30001 is added successfully.
+The nurse Nada Abdullah, with ID 30003 is added successfully.
+----------------------
+
+--->>  Add Appointment
+
+The appointment with doctor Fatima Ahmed, at 12/6/2021 10AM is available now.
+The appointment with doctor Ahmad Emaed, at 12/6/2021 11AM is available now.
+The appointment with doctor Sara Fawaz, at 12/6/2021 08AM is available now.
+The appointment with doctor Sara Fawaz, at 12/6/2021 12PM is available now.
+The appointment with doctor Fatima Ahmed, at 12/6/2021 18:30PM is available now.
+The appointment with doctor Ahmad Emaed, at 12/6/2021 16PM is available now.
+The appointment with doctor Ahmad Emaed, at 13/6/2021 10:30AM is available now.
+The appointment with doctor Sara Fawaz, at 13/6/2021 11AM is available now.
+The appointment with doctor Ahmad Emaed, at 13/6/2021 10:30AM is available now.
+The appointment with doctor Fatima Ahmed, at 13/6/2021 07AM is available now.
+The appointment with doctor Ahmad Emaed, at 13/6/2021 16PM is available now.
+The appointment with doctor Sara Fawaz, at 13/6/2021 09AM is available now.
+The appointment with doctor Ahmad Emaed, at 12/7/2021 10AM is available now.
+The appointment with doctor Fatima Ahmed, at 12/7/2021 11AM is available now.
+The appointment with doctor Sara Fawaz, at 12/7/2021 12:30AM is available now.
+The appointment with doctor Fatima Ahmed, at 12/7/2021 03AM is available now.
+The appointment with doctor Sara Fawaz, at 12/7/2021 16PM is available now.
+The appointment with doctor Ahmad Emaed, at 12/7/2021 15:30PM is available now.
+The appointment with doctor Sara Fawaz, at 13/7/2021 01AM is available now.
+The appointment with doctor Fatima Ahmed, at 13/7/2021 11AM is available now.
+The appointment with doctor Sara Fawaz, at 13/7/2021 12PM is available now.
+The appointment with doctor Ahmad Emaed, at 13/7/2021 17PM is available now.
+The appointment with doctor Fatima Ahmed, at 13/7/2021 13PM is available now.
+The appointment with doctor Sara Fawaz, at 13/7/2021 12PM is available now.
+----------------------
+
+--->>  Add Appointment
+
+Dear Sultan Alsulami, the appointment is available, please pay the bill to confirm it.
+----------------------
+
+--->>  Add Appointment
+
+Dear Wael Alzhrani, sorry the ppointment is reserved, please choose another.
+----------------------
+
+--->>  Add Appointment
+
+Dear Sultan Alsulami, the appointment is available, please pay the bill to confirm it.
+----------------------
+
+--->>  Add Appointment
+
+Dear Sultan Alsulami, sorry the ppointment is reserved, please choose another.
+----------------------
+
+--->>  Add Appointment
+
+Dear Wael Alzhrani, the appointment is available, please pay the bill to confirm it.
+----------------------
+
+--->>  Add Appointment
+
+Dear 10005, you can not book an appointment since that you are not registered.
+----------------------
+
+--->>  Cancel Appointment
+
+Dear Sultan Alsulami, the appointment is not found in your record.
+
+----------------------
+
+--->>  Add Appointment
+
+Dear Omar Ali, the ppointment is not available in the clinic, please choose another.
+----------------------
+
+--->>  Cancel Appointment
+
+Dear Wael Alzhrani, your appointment is canceled successfully.
+
+----------------------
+
+Thank you for using Our clinic System, Good Bye!
