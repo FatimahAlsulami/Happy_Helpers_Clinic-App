@@ -1,0 +1,61 @@
+4 4 24 3
+
+SignUp_Patient 
+
+SignUp_Doctor
+Fatima_Ahmed 20000 0544477989 F 38 saudi Jeddah 50000 dentist User@223563
+Ahmad_Emaed 20001 0544477933 M 45 saudi Jeddah 58000 dentist User@223587
+Sara_Fawaz 20002 0544477922 F 50 saudi Jeddah 45000 dermatologist‏ User@213263
+Naser_Khaled 20003 0534576912 F 27 saudi Jeddah 55000 dermatologist‏ User@156863
+
+SignUp_Nurse
+Amal_Naser 30000 0544471111 F 23 saudi Jeddah 5000 dentist User@226789
+Lama_Mohammed 30001 0544444933 F 30 saudi Jeddah 8000 dermatologist‏ User@226546
+Nada_Abdullah 30002 0544477222 F 32 saudi Jeddah 4000 dentist User@567865
+Majed_Abdullah 30003 0556378922 F 29 saudi Jeddah 4200 dermatologist User@123654
+
+Add_offers
+1 discount by 20% if you are from kau
+2 discount by 50% if you have gold card
+3 discount by 30% if you have bronze card‏
+
+Add_Appointment
+20000 2021 6 12 10Am 
+20001 2021 6 12 11am 
+20002 2021 6 12 08am 
+20002 2021 6 12 12Pm 
+20000 2021 6 12 18:30pm 
+20001 2021 6 12 16pm  
+20001 2021 6 13 10:30am 
+20002 2021 6 13 11am
+20001 2021 6 13 10:30am
+20000 2021 6 13 07Am
+20001 2021 6 13 16pm
+20002 2021 6 13 09am
+20001 2021 7 12 10am
+20000 2021 7 12 11Am 
+20002 2021 7 12 12:30am
+20000 2021 7 12 03am
+20002 2021 7 12 16pm
+20001 2021 7 12 15:30Pm
+20002 2021 7 13 01Am
+20000 2021 7 13 11am
+20002 2021 7 13 12Pm
+20001 2021 7 13 17pm
+20000 2021 7 13 13Pm
+20002 2021 7 13 12pm
+
+Book_Appointment 1232567890 20001 2021 6 13 10:30am 
+Book_Appointment 1232567890 20001 2021 6 13 10:30am 
+Book_Appointment 1232567890 20000 2021 7 13 11am
+Book_Appointment 1232567890 20001 2021 6 13 10:30am 
+Book_Appointment 1232567890 20002 2021 7 13 01Am
+Book_Appointment 1232567890 20002 2021 7 13 12Pm
+
+Cancel_Appointment 1232567890 20001 2021 4 13 19pm
+
+Book_Appointment 1232567890 20001 2021 4 13 19pm
+
+Cancel_Appointment 1232567890 20002 2021 7 13 01Am
+ 
+Quit
