@@ -84,4 +84,10 @@ public class Appointment {
         this.Available = Available;
     }
 
+    @Override
+    public String toString() {
+        return "in " + Year + "/" + Month + "/" + Day + " at " + AppointmentTime.toUpperCase();
+    }
+
+    
 }

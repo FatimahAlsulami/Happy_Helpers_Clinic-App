@@ -19,7 +19,7 @@ public abstract class User {
     public User(){
         
     }
-    public User(String name, String Id, String Phone, char Gender, int age, String Nationality , String address, String password) {
+    public User(String name, String Id, String Phone, char Gender, int age, String Nationality , String address) {
         this.name = name;
         this.Id = Id;
         this.Phone = Phone;
@@ -27,8 +27,8 @@ public abstract class User {
         this.age = age;
         this.Nationality = Nationality;
         this.address=address;
-        this.password = password_generator();
-      //  passwords.add(password);
+        this.password=password_generator();
+        passwords.add(password);
        // users.add(this);
     }
 
@@ -98,23 +98,6 @@ public abstract class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    private boolean validation(String ID, String password) {
-        for (int i = 0; i < users.size(); i++) {
-            if (users.get(i).getId() == ID && users.get(i).getPassword().equals(password)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private boolean login(String ID, String password) {
-        boolean exist_account = validation(ID, password);
-        if (exist_account == true) {
-            System.out.println("Yor are logged in successfully");
-            return true;
-        }
-        System.out.println("You are not regester, please sign up!");
-        return false;
-    }
+   
         
 }

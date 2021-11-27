@@ -11,8 +11,8 @@ package group_iar_5;
  */
 public class Nurse extends Staff {
     
-   public Nurse(String name, String Id, String Phone, char Gender, int age, String Nationality,String address,double salary, String specialization, String password) {
-        super(salary, specialization, name, Id, Phone, Gender, age, Nationality,address, password);
+   public Nurse(String name, String Id, String Phone, char Gender, int age, String Nationality,String address,double salary, String specialization) {
+        super(salary, specialization, name, Id, Phone, Gender, age, Nationality,address);
     }
 
     

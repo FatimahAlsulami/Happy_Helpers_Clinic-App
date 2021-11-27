@@ -14,8 +14,8 @@ public class Doctor extends Staff {
 //    public void setId(int Id) {
 //        this.Id = Id;
 //    }
-    public Doctor(String name, String Id, String Phone, char Gender, int age, String Nationality,String address,double salary, String specialization, String password) {
-        super(salary, specialization, name, Id, Phone, Gender, age, Nationality,address, password);
+    public Doctor(String name, String Id, String Phone, char Gender, int age, String Nationality,String address,double salary, String specialization) {
+        super(salary, specialization, name, Id, Phone, Gender, age, Nationality,address);
     }
     
     public Doctor find_doctor(String ID) {

@@ -20,8 +20,8 @@ public class Patient extends User {
         super();
     }
 
-    public Patient(String name, String Id, String Phone, char Gender, int age, String Nationality, String address, String password) {
-        super(name, Id, Phone, Gender, age, Nationality, address, password);
+    public Patient(String name, String Id, String Phone, char Gender, int age, String Nationality, String address) {
+        super(name, Id, Phone, Gender, age, Nationality, address);
 //        patient_file_number = file_number++;
 //        this.Diagnosis = Diagnosis;
 //        this.PatientId=Id;
@@ -44,6 +44,11 @@ public class Patient extends User {
         return this.Diagnosis;
     }
 
+    public static Appointment [] getAppointments_array() {
+        return appointments_array;
+    }
+    
+
 //    public int getPatient_file_number() {
 //        return patient_file_number;
 //    }
@@ -51,47 +56,27 @@ public class Patient extends User {
 //    public void setPatient_file_number(int patient_file_number) {
 //        this.patient_file_number = patient_file_number;
 //    }
-    public static int getAppointmentID() {
-        return appointmentID;
-    }
-
-    public static void setAppointmentID(int appointment_ID) {
-        appointmentID = appointment_ID;
-    }
 
     public int getNumber_of_appointments() {
         return number_of_appointments;
     }
 
-    public boolean AddAppointment(String doctor_ID, int year, int month, int day, String time) {
+    public boolean AddAppointment(Appointment appointment) {
         boolean flag = false;
         if (number_of_appointments >= 2) {
             flag = false;
         } else {
-            appointments_array[number_of_appointments] = new Appointment(doctor_ID, year, month, day, time);
+            appointments_array[number_of_appointments] = new Appointment(appointment.getDoctor_ID(), 
+                    appointment.getYear(), appointment.getMonth(), appointment.getDay(), appointment.getAppointmentTime());
             number_of_appointments++;
             flag = true;
         }
         return flag;
     }
 
-    public int SearchAppointment(int Year, int month, int day, String time) {
-        int x = -1;
-        for (int i = 0; i < number_of_appointments; i++) {
-            if (appointments_array[i].getDay() == day
-                    && appointments_array[i].getMonth() == month
-                    && appointments_array[i].getYear() == Year
-                    && appointments_array[i].getAppointmentTime().equalsIgnoreCase(time)) {
 
-                x = i;
-
-            }
-        }
-        return x;
-    }
     
     public void delete_appointment(int index) {
-
         appointments_array[index].setAvailable(true);
         this.appointments_array[index] = null;
         number_of_appointments--;
