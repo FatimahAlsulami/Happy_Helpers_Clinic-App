@@ -1,11 +1,7 @@
 package group_iar_5;
 
 public class Doctor extends Staff {
-    
-     public Doctor(){
-        super();
-    }
-
+   
     public Doctor(String name, String Id, String Phone, char Gender, int age, String Nationality,String address,double salary, String specialization) {
         super(salary, specialization, name, Id, Phone, Gender, age, Nationality,address);
     }

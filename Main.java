@@ -10,10 +10,10 @@ public class Main {
 
     static int patientIndex = 0;
     static int appointmentIndex = 0;
-    static int offerIndex = 0;
 
     static ArrayList<Appointment> dentisList = new ArrayList<>();
     static ArrayList<Appointment> dermatologyList = new ArrayList<>();
+    static ArrayList<Offers> offersList = new ArrayList<>();
 
     public static void main(String[] args) throws FileNotFoundException {
 
@@ -31,13 +31,13 @@ public class Main {
         // arrays to store clinic's patients, doctors, nurses, available appointments
         Doctor[] doctors_array = new Doctor[total_number_of_doctor];
         Nurse[] nurses_array = new Nurse[total_number_of_Nurse];
-        Offers[] offers = new Offers[total_number_of_Offers];
+        //Offers[] offers = new Offers[total_number_of_Offers];
         ArrayList<Patient> patients_list = new ArrayList<>();
         Appointment[] PaitentAppointment = new Appointment[2];
 
         try {
 
-            System.out.println("---- Welcome to Happy Helpers Clinic ----\n\n");
+            System.out.println("---- Welcome to Happy Helpers Clinic ----\n");
             String command;
             while (fileInput.hasNext()) {
                 command = fileInput.next();
@@ -47,6 +47,10 @@ public class Main {
                     SignUp_Nurse(nurses_array, fileInput);
                 } else if (command.equals("Add_Appointment")) {
                     Show_Appointment(total_number_of_appointments, dentisList, dermatologyList, doctors_array, fileInput);
+                } else if (command.equals("Add_offers")) {
+                    for (int i = 0; i < total_number_of_Offers; i++) {
+                        offersList.add(new Offers(fileInput.nextInt(), fileInput.nextLine().trim()));
+                    }
                 }
             }
 
@@ -86,19 +90,20 @@ public class Main {
                     // If user choose book appointment
                     case 3:
                         // Check that the patient is logged in
-                        if (patients_list.size() != 0) {
-                            System.out.println("\nBOOK APPOINTMENT");
+                        if (!patients_list.isEmpty()) {
+                            System.out.println("\n----------- BOOK APPOINTMENT ----------- ");
                             do {
 
-                                System.out.println("Choose department"
+                                System.out.println("\nThe available departments are:"
                                         + "\n1. Dentis department"
                                         + "\n2. Dermatology department");
+                                System.out.print("\nPlease enter the department number:");
                                 // Take choosen department by the user
                                 department_choice = integerInput.nextInt();
                                 switch (department_choice) {
                                     // In case the chosen dpartment was dentis
                                     case 1:
-                                        System.out.print("\n----------- BOOK FOR DENTIST -----------");
+                                        System.out.print("\nBOOK FOR DENTIST");
                                         //Display all available appointments so user can choose from
                                         displayAppointmentsInDentisDept(dentisList, doctors_array);
                                         // Take user choice
@@ -108,9 +113,9 @@ public class Main {
                                         // Book the choosen appointment for the user
                                         BookDentisAppointment(selection, dentisList, complete, patients_list, doctors_array, PaitentAppointment);
                                         break;
-                                    // In case the chosen dpartment was يermatology
+                                    // In case the chosen dpartment was dermatology
                                     case 2:
-                                        System.out.println("\n----------- BOOK FOR DERMATOLOGIST -----------");
+                                        System.out.println("\nBOOK FOR DERMATOLOGIST");
                                         //Display all available appointments so user can choose from
                                         displayAppointmentsInDermatologyDept(dermatologyList, doctors_array);
                                         System.out.print("\nChoose Appointment Number: ");
@@ -132,8 +137,8 @@ public class Main {
                     // If user choose cancel appointment
                     case 4:
 
-                        if (patients_list.size() != 0) {
-                            System.out.println("\nCANCEL APPOINTMENT");
+                        if (!patients_list.isEmpty()) {
+                            System.out.println("\n----------- CANCEL APPOINTMENT -----------\n");
                             displayReservedAppointment(PaitentAppointment, patients_list);
                             System.out.print("\nChoose Appointment Number to cancel it: ");
                             int selection = integerInput.nextInt();
@@ -146,10 +151,14 @@ public class Main {
                     // If user choose display offers
                     case 5:
 
-                        if (patients_list.size() != 0) {
-                            System.out.println("\nDISPLAY OFFERS");
+                        if (!patients_list.isEmpty()) {
+                            System.out.println("\n----------- DISPLAY OFFERS -----------\n");
+                            for (int i = 0; i < offersList.size(); i++) {
+                                System.out.println(offersList.get(i).getOffersID() + ". " + offersList.get(i).getContent());
+                            }
+
                             // Invoke the method to display all available offers and reserve the selected offer 
-                            reserveOffer(integerInput, offers);
+                            reserveOffer(integerInput);
                         } else {
                             System.out.println("\nYou must register or log in!");
                         }
@@ -157,8 +166,8 @@ public class Main {
                     // If user choose display recommendation (still under processing)
                     case 6:
 
-                        if (patients_list.size() != 0) {
-                            System.out.println("\nDISPLAY RECOMMENDATIONS");
+                        if (!patients_list.isEmpty()) {
+                            System.out.println("\n----------- DISPLAY RECOMMENDATIONS -----------");
                             System.out.println("\nDear , this service under development it will be avalible soon :) ");
                         } else {
                             System.out.println("\nYou must register or log in!");
@@ -167,8 +176,8 @@ public class Main {
                     // If user choose display appointments
                     case 7:
 
-                        if (patients_list.size() != 0) {
-                            System.out.println("\nDISPLAY APPOINTMENTS\n");
+                        if (!patients_list.isEmpty()) {
+                            System.out.println("\n----------- DISPLAY APPOINTMENTS -----------\n");
                             displayReservedAppointment(PaitentAppointment, patients_list);
                         } else {
                             System.out.println("\nYou must register or log in!");
@@ -177,8 +186,8 @@ public class Main {
                     // If user choose display x-ray results (still under processing)
                     case 8:
 
-                        if (patients_list.size() != 0) {
-                            System.out.println("\nDISPLAY X-RAY RESULTS");
+                        if (!patients_list.isEmpty()) {
+                            System.out.println("\n----------- DISPLAY X-RAY RESULTS -----------");
                             System.out.println("\nDear " + patients_list.get(patientIndex).getName() + ", this service under development it will be avalible soon :) ");
                         } else {
                             System.out.println("\nYou must register or log in!");
@@ -187,8 +196,8 @@ public class Main {
                     // If user choose display test results (still under processing)
                     case 9:
 
-                        if (patients_list.size() != 0) {
-                            System.out.println("\nDISPLAY TEST RESULTS");
+                        if (!patients_list.isEmpty()) {
+                            System.out.println("\n----------- DISPLAY TEST RESULTS -----------");
                             System.out.println("\nDear " + patients_list.get(patientIndex).getName() + ", this service under development it will be avalible soon :) ");
                         } else {
                             System.out.println("\nYou must register or log in!");
@@ -196,7 +205,8 @@ public class Main {
                         break;
 
                     default:
-                        System.out.println("\nERROR, You'r choice wrong!!, try again : ");
+                        System.out.print("\nERROR, Your choice is wrong!, please try again: ");
+                        System.lineSeparator();
                 }
 
                 System.out.print("\nDo you want another service? enter Y for yes, or N for no: ");
@@ -240,7 +250,7 @@ public class Main {
                     input.nextDouble(), input.next());
         }
     }
-    
+
     // Method that search for a nurse and return his index
     public static Nurse find_nurse(Nurse[] nursess_array, String id) {
         for (int i = 0; i < nursess_array.length; i++) {
@@ -290,7 +300,7 @@ public class Main {
 
     // Method that display the offered services
     public static void DisplayMenuServices() {
-        System.out.println("------------------------------------");
+        System.out.println("\n------------------------------------");
         System.out.println("Choose from our services!");
         System.out.println("------------------------------------");
         System.out.println("1. Sign up \n"
@@ -307,17 +317,7 @@ public class Main {
     }
 
     // Method that reserve the selected offer
-    public static void reserveOffer(Scanner input, Offers[] offers) {
-        System.out.println("1. discount by 20% if you are from kau\n"
-                + "2. discount by 50% if you have gold card\n"
-                + "3. discount by 30% if you have bronze card");
-
-        System.out.print("Choose the offer you want by entering its number: ");
-
-        offers[offerIndex++] = new Offers(1, "discount by 20% if your from kau");
-        offers[offerIndex++] = new Offers(2, "discount by 50% if your have gold card");
-        offers[offerIndex++] = new Offers(3, "discount by 20% if your from kau");
-
+    public static void reserveOffer(Scanner input) {
         int choice = 0;
         boolean offerAvailability = checkOffer(choice);
         while (offerAvailability == false) {

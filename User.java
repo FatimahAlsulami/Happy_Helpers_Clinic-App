@@ -6,8 +6,8 @@ import java.util.Random;
 public abstract class User {
 
     private String name;
-    private String Id; //XXXXXXXXXXXXXXXXXXXXXX check only 10 digits 
-    private String Phone; //XXXXXXXXXXXXXXXXXXXXXXXXX check only 10 digits 
+    private String Id; 
+    private String Phone;
     private char Gender;
     private int age;
     private String Nationality;
@@ -16,9 +16,6 @@ public abstract class User {
     private ArrayList<String> passwords = new ArrayList<String>();
     public static ArrayList<User> users = new ArrayList<User>();
 
-    public User(){
-        
-    }
     public User(String name, String Id, String Phone, char Gender, int age, String Nationality , String address) {
         this.name = name;
         this.Id = Id;

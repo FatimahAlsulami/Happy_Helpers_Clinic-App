@@ -9,11 +9,6 @@ public class Patient extends User {
     static int appointmentID = 1;
     private String address = null;
 
-
-    public Patient() {
-        super();
-    }
-
     public Patient(String name, String Id, String Phone, char Gender, int age, String Nationality, String address) {
         super(name, Id, Phone, Gender, age, Nationality, address);
 
