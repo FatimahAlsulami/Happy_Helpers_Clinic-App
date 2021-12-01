@@ -6,17 +6,20 @@ import java.util.Random;
 public abstract class User {
 
     private String name;
-    private String Id; 
-    private String Phone;
+    private String Id; //XXXXXXXXXXXXXXXXXXXXXX check only 10 digits 
+    private String Phone; //XXXXXXXXXXXXXXXXXXXXXXXXX check only 10 digits 
     private char Gender;
-    private int age;
+    private String age;
     private String Nationality;
     private String password;
     private String address=null;
     private ArrayList<String> passwords = new ArrayList<String>();
     public static ArrayList<User> users = new ArrayList<User>();
 
-    public User(String name, String Id, String Phone, char Gender, int age, String Nationality , String address) {
+    public User(){
+        
+    }
+    public User(String name, String Id, String Phone, char Gender, String age, String Nationality , String address) {
         this.name = name;
         this.Id = Id;
         this.Phone = Phone;
@@ -82,11 +85,11 @@ public abstract class User {
         return password;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
     public String getPassword() {

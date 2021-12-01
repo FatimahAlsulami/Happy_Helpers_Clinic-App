@@ -6,10 +6,13 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// HAPPY HELPERS CLINIC SYSTEM 
+
 public class Main {
 
     static int patientIndex = 0;
     static int appointmentIndex = 0;
+    static int offerIndex = 0;
 
     static ArrayList<Appointment> dentisList = new ArrayList<>();
     static ArrayList<Appointment> dermatologyList = new ArrayList<>();
@@ -31,7 +34,6 @@ public class Main {
         // arrays to store clinic's patients, doctors, nurses, available appointments
         Doctor[] doctors_array = new Doctor[total_number_of_doctor];
         Nurse[] nurses_array = new Nurse[total_number_of_Nurse];
-        //Offers[] offers = new Offers[total_number_of_Offers];
         ArrayList<Patient> patients_list = new ArrayList<>();
         Appointment[] PaitentAppointment = new Appointment[2];
 
@@ -55,6 +57,7 @@ public class Main {
             }
 
             String complete = "Y";
+
             int service_choice, department_choice;
             do {
                 // Display services
@@ -157,7 +160,7 @@ public class Main {
                                 System.out.println(offersList.get(i).getOffersID() + ". " + offersList.get(i).getContent());
                             }
 
-                            // Invoke the method to display all available offers and reserve the selected offer 
+                            // Invoke the method reserve the selected offer 
                             reserveOffer(integerInput);
                         } else {
                             System.out.println("\nYou must register or log in!");
@@ -213,19 +216,22 @@ public class Main {
                 System.lineSeparator();
                 System.lineSeparator();
                 complete = StringInput.next().toUpperCase();
+            
+
             } while (complete.equals("Y"));
             patientIndex++;
+
         } catch (Exception ex) {
             System.out.println("PLEASE CHECK YOUR INPUT AND TRY AGAIN! ");
         }
 
     }
-
     // Method that add doctors information from the file
+
     public static void SignUp_Doctor(Doctor[] doctors_array, Scanner input) {
         for (int i = 0; i < doctors_array.length; i++) {
             doctors_array[i] = new Doctor(input.next().replaceAll("_", " "), input.next(), input.next(),
-                    input.next().charAt(0), input.nextInt(), input.next(), input.next(),
+                    input.next().charAt(0), input.next(), input.next(), input.next(),
                     input.nextDouble(), input.next());
         }
     }
@@ -246,7 +252,7 @@ public class Main {
     public static void SignUp_Nurse(Nurse[] nursess_array, Scanner input) {
         for (int i = 0; i < nursess_array.length; i++) {
             nursess_array[i] = new Nurse(input.next().replaceAll("_", " "), input.next(), input.next(),
-                    input.next().charAt(0), input.nextInt(), input.next(), input.next(),
+                    input.next().charAt(0), input.next(), input.next(), input.next(),
                     input.nextDouble(), input.next());
         }
     }
@@ -263,15 +269,36 @@ public class Main {
         return null;
     }
 
+    // this method check if string contain only characters 
+    public static boolean validtaeString(String str) {
+        str = str.toLowerCase();
+        char[] charArray = str.toCharArray();
+        for (int i = 0; i < charArray.length; i++) {
+            char ch = charArray[i];
+            if (!(ch >= 'a' && ch <= 'z')) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     // Method to sign up new patient
     public static Patient signUp_Patient(ArrayList<Patient> patients_array, Scanner input, Scanner input2) {
         System.out.println("\nPlease fill the following information:");
         System.out.print("Name: ");
-        String name = input.nextLine();
+        String name = input.next();
+        boolean check_name = validtaeString(name);
+        while (check_name == false) {
+            System.out.print("Please try again, only String is allowed! ");
+            name = input.next();
+            check_name = validtaeString(name);
+
+        }
+
         System.out.print("ID: ");
         String id = input.next();
         // To insure that the patient entered a real ID
-        while ((id.matches("[0-9]+") && id.length() == 10 && id.startsWith("1")) == false) {
+        while ((id.matches("[0-9]+") && (id.length() == 10)) == false) {
             System.out.print("Please try again, only 10 DIGITS is allowed! ");
             id = input.next();
         }
@@ -283,24 +310,50 @@ public class Main {
             phone = input.next();
         }
         System.out.print("Gender (F for female and M for male): ");
-        String gender = input.next() + "";
-        while (((gender.equalsIgnoreCase("f") && gender.length() == 1) || (gender.equalsIgnoreCase("m") && gender.length() == 1)) == false) {
+        String gender = input.next();
+
+        while (((gender.equalsIgnoreCase("f") && gender.length() == 1)
+                || (gender.equalsIgnoreCase("m") && gender.length() == 1)) == false) {
             System.out.print("Please try again, only f or m is allowed! ");
-            gender = input.next().charAt(0) + "";
+            gender = input.next();
+
         }
         System.out.print("Age: ");
-        int age = input2.nextInt();
+        String age = input.next();
+        boolean check_Age = age.matches("[0-9]+");
+        while (check_Age == false) {
+            System.out.print("Please try again, only Number allowed! ");
+            age = input.next();
+            check_Age = age.matches("[0-9]+");
+        }
+
         System.out.print("Nationality: ");
         String nationality = input2.next();
+
+        boolean check_nationality = validtaeString(nationality);
+        while (check_nationality == false) {
+            System.out.print("Please try again, only String is allowed! ");
+            nationality = input.next();
+            check_nationality = validtaeString(nationality);
+        }
+
         System.out.print("Address: ");
         String address = input.next();
+
+        boolean check_address = validtaeString(address);
+        while (check_address == false) {
+            System.out.print("Please try again, only String is allowed! ");
+            address = input.next();
+            check_address = validtaeString(address);
+        }
+
         // create new object with patient's information and return it
         return new Patient(name, id, phone, gender.charAt(0), age, nationality, address);
     }
 
     // Method that display the offered services
     public static void DisplayMenuServices() {
-        System.out.println("\n------------------------------------");
+        System.out.println("------------------------------------");
         System.out.println("Choose from our services!");
         System.out.println("------------------------------------");
         System.out.println("1. Sign up \n"
@@ -321,6 +374,7 @@ public class Main {
         int choice = 0;
         boolean offerAvailability = checkOffer(choice);
         while (offerAvailability == false) {
+            System.out.print("\n Choose The number of offer you want : ");
             choice = input.nextInt();
 
             offerAvailability = checkOffer(choice);
@@ -338,7 +392,6 @@ public class Main {
                     System.out.print("ERROR, Your choice is wrong! please try again: ");
             }
         }
-
     }
 
     // Method that add available appointments to display them later
