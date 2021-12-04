@@ -1,14 +1,21 @@
 package group_iar_5;
 
-public class Appointment {
+import java.util.ArrayList;
+import java.util.Date;
 
+public class Appointment {
     private int Year;
     private int Month;
     private int Day;
     private String patient_ID;
     private String doctor_ID;
-    private String AppointmentTime;
+    private String AppointmentTime;    
     private boolean Available = true;
+    
+    //contractor
+    Appointment() {
+
+    }
 
     Appointment(String doctorID, int Year, int Month, int Day, String AppointmentTime) {
         this.doctor_ID = doctorID;
@@ -16,9 +23,11 @@ public class Appointment {
         this.Month = Month;
         this.Day = Day;
         this.AppointmentTime = AppointmentTime;
-
+//        patient_ID = p_ID;
+//        doctor_ID = d_ID;
+//        Patient.appointmentID = AppointmentID;
     }
-
+  
     public void setYear(int Year) {
         this.Year = Year;
     }
@@ -73,11 +82,6 @@ public class Appointment {
 
     public void setAvailable(boolean Available) {
         this.Available = Available;
-    }
-
-    @Override
-    public String toString() {
-        return "in " + Day + "/" + Month + "/" + Year + " at " + AppointmentTime.toUpperCase();
     }
 
 }

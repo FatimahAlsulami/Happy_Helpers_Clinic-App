@@ -1,13 +1,21 @@
 package group_iar_5;
 
 public class Doctor extends Staff {
+    private String [] diagnosis;
     
      public Doctor(){
         super();
     }
 
-    public Doctor(String name, String Id, String Phone, char Gender, String age, String Nationality,String address,double salary, String specialization) {
-        super(salary, specialization, name, Id, Phone, Gender, age, Nationality,address);
+//    public int getId() {
+//        return Id;
+//    }
+//
+//    public void setId(int Id) {
+//        this.Id = Id;
+//    }
+    public Doctor(String name, String Id, String Phone, char Gender, int age, String Nationality,String address,double salary, String specialization, String password) {
+        super(salary, specialization, name, Id, Phone, Gender, age, Nationality,address, password);
     }
     
     public Doctor find_doctor(String ID) {
@@ -19,5 +27,12 @@ public class Doctor extends Staff {
         return null;
     }
 
+//    public String getDiagnosis() {
+//        return diagnosis;
+//    }
+//
+//    public void setDiagnosis(String diagnosis) {
+//        this.diagnosis = diagnosis;
+//    }
     
 }

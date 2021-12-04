@@ -9,7 +9,7 @@ public abstract class User {
     private String Id; //XXXXXXXXXXXXXXXXXXXXXX check only 10 digits 
     private String Phone; //XXXXXXXXXXXXXXXXXXXXXXXXX check only 10 digits 
     private char Gender;
-    private String age;
+    private int age;
     private String Nationality;
     private String password;
     private String address=null;
@@ -19,7 +19,7 @@ public abstract class User {
     public User(){
         
     }
-    public User(String name, String Id, String Phone, char Gender, String age, String Nationality , String address) {
+    public User(String name, String Id, String Phone, char Gender, int age, String Nationality , String address, String password) {
         this.name = name;
         this.Id = Id;
         this.Phone = Phone;
@@ -27,9 +27,9 @@ public abstract class User {
         this.age = age;
         this.Nationality = Nationality;
         this.address=address;
-        this.password=password_generator();
-        passwords.add(password);
-   
+        this.password = password_generator();
+      //  passwords.add(password);
+       // users.add(this);
     }
 
     public void setName(String name) {
@@ -85,11 +85,11 @@ public abstract class User {
         return password;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
     public String getPassword() {
@@ -98,6 +98,23 @@ public abstract class User {
     public void setPassword(String password) {
         this.password = password;
     }
-   
+    private boolean validation(String ID, String password) {
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getId() == ID && users.get(i).getPassword().equals(password)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean login(String ID, String password) {
+        boolean exist_account = validation(ID, password);
+        if (exist_account == true) {
+            System.out.println("Yor are logged in successfully");
+            return true;
+        }
+        System.out.println("You are not regester, please sign up!");
+        return false;
+    }
         
 }

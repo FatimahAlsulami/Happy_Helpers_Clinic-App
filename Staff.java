@@ -10,8 +10,8 @@ public abstract class Staff extends User {
     {
         
     }
-    public Staff(double salary, String specialization, String name, String Id, String Phone, char Gender, String age, String Nationality,String address) {
-        super(name, Id, Phone, Gender, age, Nationality, address);
+    public Staff(double salary, String specialization, String name, String Id, String Phone, char Gender, int age, String Nationality,String address, String password) {
+        super(name, Id, Phone, Gender, age, Nationality, address, password);
         this.salary = salary;
         this.specialization = specialization;
     }
