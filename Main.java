@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 // HAPPY HELPERS CLINIC SYSTEM 
-
 public class Main {
 
     static int patientIndex = 0;
@@ -153,7 +152,7 @@ public class Main {
                         break;
                     // If user choose display offers
                     case 5:
-
+                   // Display all offers that avalible in clinic system 
                         if (!patients_list.isEmpty()) {
                             System.out.println("\n----------- DISPLAY OFFERS -----------\n");
                             for (int i = 0; i < offersList.size(); i++) {
@@ -161,7 +160,7 @@ public class Main {
                             }
 
                             // Invoke the method reserve the selected offer 
-                            reserveOffer(integerInput);
+                            Reserve_Offer(integerInput);
                         } else {
                             System.out.println("\nYou must register or log in!");
                         }
@@ -216,7 +215,6 @@ public class Main {
                 System.lineSeparator();
                 System.lineSeparator();
                 complete = StringInput.next().toUpperCase();
-            
 
             } while (complete.equals("Y"));
             patientIndex++;
@@ -362,7 +360,7 @@ public class Main {
                 + "4. Cancel Appointment\n"
                 + "5. Display Offers\n"
                 + "6. Display Recomendations\n"
-                + "7. Display Appointments\n"
+                + "7. Display Reserved Appointments\n"
                 + "8. Disply X-RAY Results\n"
                 + "9. Disply test Results");
         System.out.println("------------------------------------");
@@ -370,28 +368,27 @@ public class Main {
     }
 
     // Method that reserve the selected offer
-    public static void reserveOffer(Scanner input) {
+    public static void Reserve_Offer(Scanner input) {
+        System.out.print("\n Choose the number of offer you want: ");
         int choice = 0;
         boolean offerAvailability = checkOffer(choice);
         while (offerAvailability == false) {
-            System.out.print("\n Choose The number of offer you want : ");
+            
             choice = input.nextInt();
-
             offerAvailability = checkOffer(choice);
-            switch (choice) {
-                case 1:
-                    System.out.println("you have discount by 20%");
-                    break;
-                case 2:
-                    System.out.println("you have discount by 50%");
-                    break;
-                case 3:
-                    System.out.println("you have discount by 30%");
-                    break;
-                default:
-                    System.out.print("ERROR, Your choice is wrong! please try again: ");
+
+            if (offerAvailability) {
+                for (int i = 0; i < offersList.size(); i++) {
+                    if ((i + 1) == choice) {
+                        System.out.println("You have " + offersList.get(i).getContent().substring(0, 15)
+                        +", it will be deducted from the payment amount.");
+                    }
+                }
+            } else {
+                System.out.print("ERROR, Your choice is wrong! please try again: ");
             }
         }
+
     }
 
     // Method that add available appointments to display them later
@@ -432,7 +429,7 @@ public class Main {
         for (int i = 0; i < appointments_denlist.size(); i++) {
             Doctor doctor = find_doctor(doctors_array, appointments_denlist.get(i).getDoctor_ID());
             if (appointments_denlist.get(i).isAvailable() == true) {
-                System.out.println((++count) + ". Appointment with Dr. " + doctor.getName() + appointments_denlist.get(i).toString());
+                System.out.println((++count) +". Appointment with Dr. " + doctor.getName() + appointments_denlist.get(i).toString());
             }
 
         }
